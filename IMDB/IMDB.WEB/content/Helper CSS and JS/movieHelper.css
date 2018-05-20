@@ -1,0 +1,8 @@
+﻿/* Specify styling for tooltip contents */
+.tooltip.customClass .tooltip-inner {
+    max-width: 100%;
+}
+
+.tooltip.customClass .tooltip-arrow {
+    display: none;
+}

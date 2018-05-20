@@ -1,0 +1,14 @@
+D:\IMDB\IMDB.WEB\bin\IMDB.WEB.dll.config
+D:\IMDB\IMDB.WEB\bin\IMDB.WEB.dll
+D:\IMDB\IMDB.WEB\bin\IMDB.WEB.pdb
+D:\IMDB\IMDB.WEB\obj\Debug\IMDB.WEB.csprojAssemblyReference.cache
+D:\IMDB\IMDB.WEB\obj\Debug\IMDB.WEB.csproj.CoreCompileInputs.cache
+D:\IMDB\IMDB.WEB\obj\Debug\IMDB.WEB.dll
+D:\IMDB\IMDB.WEB\obj\Debug\IMDB.WEB.pdb
+C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB.WEB\bin\IMDB.WEB.dll.config
+C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB.WEB\bin\IMDB.WEB.dll
+C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB.WEB\bin\IMDB.WEB.pdb
+C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB.WEB\obj\Debug\IMDB.WEB.csprojAssemblyReference.cache
+C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB.WEB\obj\Debug\IMDB.WEB.csproj.CoreCompileInputs.cache
+C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB.WEB\obj\Debug\IMDB.WEB.dll
+C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB.WEB\obj\Debug\IMDB.WEB.pdb

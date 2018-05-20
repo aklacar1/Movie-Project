@@ -1,0 +1,269 @@
+﻿<!-- Tree Grid -->
+<div class="page-header">
+    <div class="content-title">
+        <h3 class="colorMeWhite">Manage Movies</h3>
+        <a class="btn btn-primary criteria-add-btn" role="button" data-toggle='modal' data-target='#addMovieModal'>Add Movie</a>
+    </div>
+</div>
+<div>
+    <div class="table-search main" style="padding:0">
+        <form class="form">
+            <div class="form-group">
+                <input class="form-control " type="text" data-ng-model="filterString" placeholder="Quick search" />
+            </div>
+        </form>
+    </div>
+    <tree-grid tree-data="tree_data" tree-control="my_tree" col-defs="col_defs" expand-on="expanding_property" on-select="my_tree_handler(branch)" expand-level="1" icon-expand="glyphicon glyphicon-chevron-right" icon-collapse="glyphicon glyphicon-chevron-down" icon-leaf="glyphicon glyphicon-globe"></tree-grid>
+</div>
+
+<!--Add Movie Modal -->
+<div id="addMovieModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add Movie</h4>
+            </div>
+            <form name="addMovieForm" role="form">
+                <div class="modal-body">
+                    <!--Title-->
+                    <div class="form-group row">
+                        <label for="title" class="col-xs-2 col-form-label">Title</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" value="" ng-minlength="3" minlength="3" required ng-model="movie.title">
+                        </div>
+                    </div>
+                    <!--Duration-->
+                    <div class="form-group row">
+                        <label for="duration" class="col-xs-2 col-form-label">Duration</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" placeholder = "Time Format : 99:60:60" pattern="([0-9][0-9]):([0-5][0-9]|[6][0]):([0-5][0-9]|[6][0])" required ng-model="movie.duration">
+                        </div>
+                    </div>
+                    <!--Summary-->
+                    <div class="form-group row">
+                        <label for="summary" class="col-xs-2 col-form-label">Summary</label>
+                        <div class="col-xs-10">
+                            <textarea class="form-control" id="description" rows="3" ng-minlength="20" minlength="20" required ng-model="movie.summary"></textarea>
+                        </div>
+                    </div>
+                    <!--Company-->
+                    <div class="form-group row">
+                        <label for="category" class="col-xs-2 col-form-label">Company ID</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" placeholder ="First digit must not be 0." patern = "([1-9]+[0-9]*)" required ng-model="movie.company.companyId">
+                        </div>
+                    </div>
+                    <!--Release Date-->
+                    <div class="form-group row">
+                        <label for="movieDate" class="col-xs-2 col-form-label">Release Date<i class='glyphicon glyphicon-info-sign' data-toggle='tooltip' title='Date of movie release.'></i></label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="datetime-local" value="" ng-model="movie.releaseDate" required>
+                        </div>
+                    </div>
+                    <!--Release Year-->
+                    <div class="form-group row">
+                        <label for="description" class="col-xs-2 col-form-label">Release Year</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" pattern="(19[4-9][0-9]|20[0-9][0-9])" placeholder="Valid year between 1940 and 2099" required ng-model="movie.releaseYear"></input>
+                        </div>
+                    </div>
+                    <!--Media URL-->
+                    <div class="form-group row">
+                        <label for="mediaurl" class="col-xs-2 col-form-label">Image Url</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="url" value="" ng-minlength="3" minlength="3" required ng-model="movie.image">
+                        </div>
+                    </div>
+                    <!--Media URL-->
+                    <div class="form-group row">
+                        <label for="mediaurl" class="col-xs-2 col-form-label">Youtube Url</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="url" value="" ng-minlength="3" minlength="3" required ng-model="movie.trailerLink">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" data-dismiss="modal" ng-click="addMovieF(movie);" ng-if="!(addMovieForm.$invalid||addMovieForm.$error.minlength||addMovieForm.$error.required)">Add</button>
+                        <button type="submit" class="btn btn-warning" ng-click="" ng-if="addMovieForm.$invalid||addMovieForm.$error.minlength||addMovieForm.$error.required">Add</button>
+                        <button class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!--Edit Movie Modal -->
+<div id="editMovieModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit movie</h4>
+            </div>
+            <form name="editmovieForm" role="form">
+                <div class="modal-body">
+                    <!--Title-->
+                    <div class="form-group row">
+                        <label for="title" class="col-xs-2 col-form-label">Title</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" value="" ng-minlength="3" minlength="3" required ng-model="editMovie.title">
+                        </div>
+                    </div>
+                    <!--Duration-->
+                    <div class="form-group row">
+                        <label for="duration" class="col-xs-2 col-form-label">Duration</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" placeholder = "Time Format : 99:60:60" pattern="([0-9][0-9]):([0-5][0-9]|[6][0]):([0-5][0-9]|[6][0])" required ng-model="editMovie.duration">
+                        </div>
+                    </div>
+                    <!--Summary-->
+                    <div class="form-group row">
+                        <label for="summary" class="col-xs-2 col-form-label">Summary</label>
+                        <div class="col-xs-10">
+                            <textarea class="form-control" id="description" rows="3" ng-minlength="20" minlength="20" required ng-model="editMovie.summary"></textarea>
+                        </div>
+                    </div>
+                    <!--Company-->
+                    <div class="form-group row">
+                        <label for="category" class="col-xs-2 col-form-label">Company ID</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" value="" placeholder ="First digit must not be 0." patern = "([1-9]+[0-9]*)" required ng-model="editMovie.company.companyId">
+                        </div>
+                    </div>
+                    <!--Release Date-->
+                    <div class="form-group row">
+                        <label for="movieDate" class="col-xs-2 col-form-label">Release Date<i class='glyphicon glyphicon-info-sign' data-toggle='tooltip' title='Date of movie release.'></i></label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="datetime-local" value="" ng-model="editMovie.releaseDate" required>
+                        </div>
+                    </div>
+                    <!--Release Year-->
+                    <div class="form-group row">
+                        <label for="description" class="col-xs-2 col-form-label">Release Year</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="text" pattern="(19[4-9][0-9]|20[0-9][0-9])" placeholder="Valid year between 1940 and 2099" required ng-model="editMovie.releaseYear"></input>
+                        </div>
+                    </div>
+                    <!--Media URL-->
+                    <div class="form-group row">
+                        <label for="mediaurl" class="col-xs-2 col-form-label">Image Url</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="url" value="" ng-minlength="3" minlength="3" required ng-model="editMovie.image">
+                        </div>
+                    </div>
+                    <!--Media URL-->
+                    <div class="form-group row">
+                        <label for="mediaurl" class="col-xs-2 col-form-label">Youtube Url</label>
+                        <div class="col-xs-10">
+                            <input class="form-control" type="url" value="" ng-minlength="3" minlength="3" required ng-model="editMovie.trailerLink">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" data-dismiss="modal" ng-click="editMovieF(editMovie);" ng-if="!(editmovieForm.$invalid||editmovieForm.$error.minlength||editmovieForm.$error.required)">Edit</button>
+                        <button type="submit" class="btn btn-warning" ng-click="" ng-if="editmovieForm.$invalid||editmovieForm.$error.minlength||editmovieForm.$error.required">Edit</button>
+                        <button class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- View Movie Modal-->
+<div id="viewMovieModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">View movie</h4>
+            </div>
+            <div>
+                <div class="modal-body ">
+                    <div class="text-left">
+                        <h4><b>Title</b></h4> {{viewMovie.title}}
+                    </div>
+
+                    <div class="text-left" style="word-wrap:break-word">
+                        <h4><b>Summary</b></h4> <span style="white-space:pre-line;"> {{viewMovie.summary}}</span>
+                    </div>
+
+                    <div class="text-left">
+                        <h4><b>Company</b></h4> {{viewMovie.company.name}}
+                    </div>
+
+                    <div class="text-left">
+                        <h4><b>Release Date</b></h4> {{viewMovie.releaseDate}}
+                    </div>
+
+                    <div class="text-left">
+                        <h4><b>Trailer</b></h4> <iframe width="480" height="360" src="{{viewMovie.trailerLink | trustAsResourceUrl}} " allowfullscreen></iframe>
+                    </div>
+                    <div class="text-left">
+                        <h4><b>Rating</b></h4> {{viewMovie.rating}}
+                    </div>
+                    <div class="text-left">
+                        <h4><b>Duration</b></h4> {{viewMovie.duration}}
+                    </div>
+                    
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Movie Modal-->
+<div id="delMovieModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Delete movie</h4>
+            </div>
+            <div>
+                <div class="modal-body ">
+                    <div class="text-left">
+                        <h4><b>Title</b></h4> {{delMovie.title}}
+                    </div>
+
+                    <div class="text-left" style="word-wrap:break-word">
+                        <h4><b>Summary</b></h4> <span style="white-space:pre-line;"> {{delMovie.summary}}</span>
+                    </div>
+
+                    <div class="text-left">
+                        <h4><b>Company</b></h4> {{delMovie.company.name}}
+                    </div>
+
+                    <div class="text-left">
+                        <h4><b>Release Date</b></h4> {{delMovie.releaseDate}}
+                    </div>
+
+                    <div class="text-left">
+                        <h4><b>Trailer</b></h4> {{delMovie.trailerLink}}
+                    </div>
+                    <div class="text-left">
+                        <h4><b>Rating</b></h4> {{delMovie.rating}}
+                    </div>
+                    <div class="text-left">
+                        <h4><b>Duration</b></h4> {{delMovie.duration}}
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger" ng-click="delMovieF(delMovie.movieId);" data-dismiss="modal">Yes</button>
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

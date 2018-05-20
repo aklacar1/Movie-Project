@@ -1,0 +1,30 @@
+﻿<form class="navbar-form" role="search">
+    <div class="input-group">
+        <div class="input-group-btn">
+            <i class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></i>
+        </div>
+        <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term" ng-model="searchText" ng-change="search()">
+    </div>
+</form>
+<div class='md-padding' layout="row" layout-wrap>
+    <md-card flex="30" flex-sm="80" ng-repeat="movie in movieList">
+        <md-card-header style="height:100%">
+            <md-card-header-text>
+                <span class="md-title">Title: {{movie.title}}</span>
+                <span class="md-subhead">Genres: <span ng-repeat="genre in movie.genres"> {{genre.name}}; </span></span>
+                <span class="md-subhead">Company: {{movie.company.name}} Rating: {{movie.rating}}</span>
+            </md-card-header-text>
+        </md-card-header>
+        <img ng-src="{{movie.img}}" class="md-card-image" alt="image caption">
+        <md-card-content style="height:100%">
+            <h4>Release Year: {{movie.releaseYear}}</h4>
+            <span class="md-subheader-wrapper">Release Date: {{movie.releaseDate | date: 'medium'}}</span>
+            <br />
+            <p class="text-left" style="word-wrap:break-word"><span style="white-space:pre-line;">{{movie.overview| limitTo:100}}<span ng-if="movie.overview.length>100">...</span></span></p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end end">
+            <md-button class="md-accent md-raised" ng-click="downloadVariable(movie);">Download Data</md-button>
+            <md-button class="md-primary md-raised" href="#/movies/{{movie.ID}}">View more</md-button>
+        </md-card-actions>
+    </md-card>
+</div>

@@ -1,0 +1,53 @@
+﻿<div class="row" layout="row" layout-align="start start" data-ng-hide="!authentication.isAuth">
+    <div class="container" style="background:#ffffff !important;">
+        <div ng-repeat="movie in movieList">
+            <br />
+            <br />
+            <img ng-src="{{movie.img}}" class="md-card-image" alt="image caption">
+            <div>
+
+                <div class="text-left">
+                    <h1 class="md-title">
+                        <b>&nbsp;Title:</b> {{movie.title}}
+                        <i class='glyphicon glyphicon-info-sign' ng-click="tooltipIsOpen = !tooltipIsOpen"><span tooltip-is-open="tooltipIsOpen" tooltip-placement="bottom-left" uib-tooltip-template="'myTooltipYTD.html'" tooltip-class="customClass"></span></i>
+                    </h1>
+                    <h4><b> &nbsp;Genres:</b> <span ng-repeat="genre in movie.genres"> {{genre.name}}; </span></h4>
+                    <h4><b>&nbsp;Rating:</b> {{movie.rating}}</h4>
+                </div>
+            </div>
+
+
+            <div>
+                <h4>
+                    <b>&nbsp;Company:</b> {{movie.company.name}}
+                </h4>
+
+                <br />
+                <h4><b>&nbsp;Summary</b></h4>
+                <h5 class="text-left" style="word-wrap:break-word"><span style="white-space:pre-line;font-size:20px;">{{movie.overview}}</span></h5>
+
+                <br />
+                <br />
+                <br />
+                <md-button class="md-accent md-raised" ng-click="downloadVariable(movie);">Download Data</md-button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #region Helpers -->
+<style>
+    /* Specify styling for tooltip contents */
+    .tooltip.customClass .tooltip-inner {
+        max-width: 100%;
+    }
+
+    .tooltip.customClass .tooltip-arrow {
+        display: none;
+    }
+</style>
+<script type="text/ng-template" id="myTooltipYTD.html">
+    <div style="width:1000px;">
+        <iframe width="840" height="640" src="{{movie.trailerLink | trustAsResourceUrl}}"  class="md-card-image" alt="image caption" style="max-height:100%;max-width:100%;" allowfullscreen></iframe>
+    </div>
+</script>
+<!-- #endregion -->

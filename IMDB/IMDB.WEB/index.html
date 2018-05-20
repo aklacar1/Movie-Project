@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="IMDBWEB" ng-cloak>
+<head>
+    <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
+    <title>Internet Movie Database</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="../../content/css/faq.css" rel="stylesheet" />
+
+
+
+    <link href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css" rel="stylesheet" />
+    <link href="content/css/searchbox.css" rel="stylesheet" />
+    <link href="content/ui-bootstrap-csp.css" rel="stylesheet" />
+    <link href="content/css/site.css" rel="stylesheet" />
+
+    <link href="app/custom-elements/treeGrid.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+</head>
+<body>
+    <div style="background-image:url('https://static.amazon.jobs/teams/53/images/IMDb_Header_Page.jpg');
+             background-size:100% 100%;
+             background-repeat:no-repeat;
+             overflow-y:auto;
+             position: absolute;
+             top: 0;
+             left: 0;
+             right: 0;
+             bottom: 0;">
+
+        <nav class="navbar navbar-inverse" role="navigation" data-ng-controller="indexController">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a data-ng-hide="!authentication.isAuth" class="navbar-brand" href="#/" style="font-size:20px;">Welcome {{authentication.userName}}</a>
+                </div>
+                <div class="collapse navbar-collapse" data-collapse="!navbarExpanded" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right" style="font-size:14px;">
+                        <li data-ng-hide="authentication.isAuth" ng-class="{ active: isActive('/movies')}"><a href="#/">Home</a></li>
+                        <li data-ng-hide="!authentication.isAuth" ng-class="{ active: isActive('/movies')}"><a href="#/movies">Movies</a></li>
+                        <li data-ng-hide="!isAdmin()" ng-class="{ active: isActive('/admin/movies')}"><a href="#/admin/movies">Manage Movies</a></li>
+                        <li ng-class="{ active: isActive('/faq')}"><a href="#/faq">FAQ <span class="sr-only">(current)</span></a></li>
+                        <li data-ng-hide="!authentication.isAuth"><a href="" data-ng-click="logOut()">Logout</a></li>
+                        <li data-ng-hide="authentication.isAuth" ng-class="{ active: isActive('/login')}"> <a href="#/login">Login</a></li>
+                        <li data-ng-hide="authentication.isAuth" ng-class="{ active: isActive('/signup')}"> <a href="#/signup">Sign Up</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+        <div class="container">
+            <div ng-view="">
+            </div>
+        </div>
+    </div>
+
+    <!-- 3rd party libraries -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+    <script src="scripts/angular-local-storage.min.js"></script>
+    <script src="scripts/ng-file-upload-all.js"></script>
+    <script src="app/custom-elements/angular-ui-notification.js"></script>
+    <script src="scripts/loading-bar.min.js"></script>
+    <script src="scripts/angular-material/angular-material.min.js"></script>
+    <script src="scripts/angular-background.min.js"></script>
+    <script src="scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <!-- Load app main script -->
+    <script src="app/app.js?v=2"></script>
+
+    <!-- Load services -->
+    <script src="app/services/authService.js"></script>
+    <script src="app/services/movieService.js"></script>
+    <!-- Load controllers -->
+    <script src="app/controllers/homeController.js"></script>
+    <script src="app/controllers/indexController.js"></script>
+    <script src="app/controllers/loginController.js"></script>
+    <script src="app/controllers/moviesController.js"></script>
+    <script src="app/controllers/signupController.js"></script>
+    <!-- Load custom filters -->
+    <!-- Load custom directives -->
+ 
+    <script src="app/custom-elements/tree-grid-directive.js"></script>
+
+</body>
+</html>
