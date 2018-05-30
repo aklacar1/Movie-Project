@@ -1,3 +1,5 @@
+# NOTE
+This project has no connections to IMDB site, it is also made for non commercial purposes.
 # Movie-Project
 There are few ways to start project :
 1. Without DB Scripts 
