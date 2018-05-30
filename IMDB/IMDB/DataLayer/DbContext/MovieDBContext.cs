@@ -50,18 +50,11 @@ namespace IMDB.Entities
                     .HasMaxLength(250)
                     .IsUnicode(false);
 
-                entity.Property(e => e.MovieId).HasColumnName("MovieID");
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.Movie)
-                    .WithMany(p => p.Genre)
-                    .HasForeignKey(d => d.MovieId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Genre_Movie");
             });
 
             modelBuilder.Entity<Job>(entity =>
@@ -198,6 +191,40 @@ namespace IMDB.Entities
                     .HasForeignKey(d => d.MovieId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Movie_Rating");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Rating)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_User_Rating");
+
+            });
+
+            modelBuilder.Entity<MovieGenres>(entity =>
+            {
+                entity.HasIndex(e => e.Id);
+
+                entity.HasIndex(e => e.MovieId);
+
+                entity.HasIndex(e => e.GenreId);
+
+                entity.Property(e => e.Id).HasColumnName("Id");
+
+                entity.Property(e => e.MovieId).HasColumnName("MovieID");
+
+                entity.Property(e => e.GenreId).HasColumnName("GenreId");
+
+                entity.HasOne(d => d.Movie)
+                    .WithMany(p => p.MovieGenres)
+                    .HasForeignKey(d => d.MovieId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Movie_MovieGenre");
+
+                entity.HasOne(d => d.Genre)
+                    .WithMany(p => p.MovieGenres)
+                    .HasForeignKey(d => d.GenreId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Genre_MovieGenre");
             });
 
             base.OnModelCreating(modelBuilder);

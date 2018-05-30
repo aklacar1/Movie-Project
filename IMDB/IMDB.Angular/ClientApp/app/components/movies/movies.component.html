@@ -1,0 +1,9 @@
+﻿<form class="navbar-form" role="search">
+    <div class="input-group">
+        <div class="input-group-btn">
+            <i class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></i>
+        </div>
+        <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term" [(ngModel)]="searchText" (ngModelChange)="search()">
+    </div>
+</form>
+

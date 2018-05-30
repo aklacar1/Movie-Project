@@ -7,7 +7,9 @@ namespace IMDB.DataLayer.Entities
     {
         public long RatingId { get; set; }
         public long MovieId { get; set; }
+        public string UserId { get; set; }
         public int MovieRating { get; set; }
         internal Movie Movie { get; set; }
+        internal Users User { get; set; }
     }
 }

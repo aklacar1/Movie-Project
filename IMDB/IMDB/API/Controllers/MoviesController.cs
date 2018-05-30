@@ -13,7 +13,7 @@ using IMDB.DataLayer.Models.ViewModels;
 
 namespace IMDB.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Produces("application/json")]
     [Route("api/Movies")]
     public class MoviesController : Controller

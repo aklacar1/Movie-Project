@@ -25,7 +25,7 @@ namespace IMDB.BussinessLayer.Services
         #region Get Movie Data
         public List<Movie> GetTop100RatedMovies() {
             return movieDB.Movie
-                .Include(Genre => Genre.Genre)
+                .Include(MG => MG.MovieGenres).ThenInclude(G=> G.Genre)
                 .Include(c=>c.Company)
                 .Include(M=>M.MovieStaff).ThenInclude(e=>e.PersonJobs).ThenInclude(e=>e.Job)
                 .Include(M => M.MovieStaff).ThenInclude(e => e.PersonJobs).ThenInclude(e => e.Person)
@@ -34,7 +34,7 @@ namespace IMDB.BussinessLayer.Services
         public List<Movie> LoadMovies()
         {
             return movieDB.Movie
-                .Include(Genre => Genre.Genre)
+                .Include(MG => MG.MovieGenres).ThenInclude(G => G.Genre)
                 .Include(c => c.Company)
                 .Include(M => M.MovieStaff).ThenInclude(e => e.PersonJobs).ThenInclude(e => e.Job)
                 .Include(M => M.MovieStaff).ThenInclude(e => e.PersonJobs).ThenInclude(e => e.Person)
@@ -43,7 +43,7 @@ namespace IMDB.BussinessLayer.Services
         public Movie GetMovieById(long id)
         {
             return movieDB.Movie
-                .Include(Genre => Genre.Genre)
+                .Include(MG => MG.MovieGenres).ThenInclude(G => G.Genre)
                 .Include(c => c.Company)
                 .Include(M => M.MovieStaff).ThenInclude(e => e.PersonJobs).ThenInclude(e => e.Job)
                 .Include(M => M.MovieStaff).ThenInclude(e => e.PersonJobs).ThenInclude(e => e.Person)
@@ -51,7 +51,7 @@ namespace IMDB.BussinessLayer.Services
         }
         public List<Movie> SearchMovieByTitle(string title) {
             return movieDB.Movie
-                .Include(Genre => Genre.Genre)
+                .Include(MG => MG.MovieGenres).ThenInclude(G => G.Genre)
                 .Include(c => c.Company)
                 .Include(M => M.MovieStaff).ThenInclude(e => e.PersonJobs).ThenInclude(e => e.Job)
                 .Include(M => M.MovieStaff).ThenInclude(e => e.PersonJobs).ThenInclude(e => e.Person)
@@ -71,7 +71,7 @@ namespace IMDB.BussinessLayer.Services
         public long InsertMovie(Movie movie) {
             movie.Rating = 5;
             movie.Company = null;
-            movie.Genre = null;
+            movie.MovieGenres = null;
             movie.RatingNavigation = null;
             movie.MovieStaff = null;
             movieDB.Movie.Add(movie);

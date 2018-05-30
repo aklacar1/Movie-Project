@@ -19,7 +19,7 @@ namespace IMDB.DataLayer.Entities
 
         public Company Company { get; set; }
         public ICollection<MovieStaff> MovieStaff { get; set; }
-        public ICollection<Genre> Genre { get; set; }
+        public ICollection<MovieGenres> MovieGenres { get; set; }
         internal ICollection<Rating> RatingNavigation { get; set; }
     }
 }

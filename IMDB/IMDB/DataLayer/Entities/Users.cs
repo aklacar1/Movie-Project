@@ -8,6 +8,6 @@ namespace IMDB.DataLayer.Entities
     {
         public long? PersonId { get; set; }
         internal Person Person { get; set; }
-
+        internal ICollection<Rating> Rating { get; set; }
     }
 }

@@ -25,9 +25,9 @@ C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB\bin\Debug\netcoreapp2.0\IMDB.r
 C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB\bin\Debug\netcoreapp2.0\IMDB.runtimeconfig.dev.json
 C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB\bin\Debug\netcoreapp2.0\IMDB.dll
 C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB\bin\Debug\netcoreapp2.0\IMDB.pdb
-C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB\obj\Debug\netcoreapp2.0\IMDB.csprojAssemblyReference.cache
 C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB\obj\Debug\netcoreapp2.0\IMDB.csproj.CoreCompileInputs.cache
 C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB\obj\Debug\netcoreapp2.0\IMDB.AssemblyInfoInputs.cache
 C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB\obj\Debug\netcoreapp2.0\IMDB.AssemblyInfo.cs
 C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB\obj\Debug\netcoreapp2.0\IMDB.dll
 C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB\obj\Debug\netcoreapp2.0\IMDB.pdb
+C:\Users\Aeternus\Desktop\Movie Project\IMDB\IMDB\obj\Debug\netcoreapp2.0\IMDB.csprojAssemblyReference.cache
